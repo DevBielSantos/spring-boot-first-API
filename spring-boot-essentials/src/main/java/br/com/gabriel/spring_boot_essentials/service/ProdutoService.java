@@ -13,26 +13,29 @@ import java.util.List;
 @Service
 public class ProdutoService {
 
-    private static final List<ProdutoEntity> PRODUTOS = List.of(
-            ProdutoEntity.builder()
-                    .id(1)
-                    .nome("Notebook")
-                    .valor(new BigDecimal(5000))
-                    .quantidade(10)
-                    .build(),
-            ProdutoEntity.builder()
-                    .id(2)
-                    .nome("Iphone")
-                    .valor(new BigDecimal(7000))
-                    .quantidade(10)
-                    .build(),
-            ProdutoEntity.builder()
-                    .id(3)
-                    .nome("Mouse")
-                    .valor(new BigDecimal(500))
-                    .quantidade(10)
-                    .build()
-    );
+    private static final List<ProdutoEntity> PRODUTOS = new ArrayList<>();
+
+    static {
+        PRODUTOS.add(ProdutoEntity.builder()
+                .id(1)
+                .nome("Notebook")
+                .valor(new BigDecimal("5000"))
+                .quantidade(10)
+                .build());
+
+        PRODUTOS.add(ProdutoEntity.builder()
+                .id(2)
+                .nome("Iphone")
+                .valor(new BigDecimal("7000"))
+                .quantidade(10)
+                .build());
+        PRODUTOS.add(ProdutoEntity.builder()
+                .id(3)
+                .nome("Mouse")
+                .valor(new BigDecimal("500"))
+                .quantidade(10)
+                .build());
+    }
 
     public List<ProdutoEntity> findAll() {
         return new ArrayList<>(PRODUTOS);
