@@ -4,7 +4,6 @@ import br.com.gabriel.spring_boot_essentials.database.model.ProdutoEntity;
 import br.com.gabriel.spring_boot_essentials.dto.ProdutoDto;
 import br.com.gabriel.spring_boot_essentials.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,13 @@ public class ProdutoController {
     @ResponseStatus(HttpStatus.CREATED)
     public ProdutoEntity createProduct(@RequestBody ProdutoDto produtoDto) {
         return produtoService.createProduct(produtoDto);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProdutoEntity updateProduct(@PathVariable Integer id,
+                                       @RequestBody ProdutoDto produtoDto) {
+        return produtoService.atualizarProduto(produtoDto, id);
     }
 
 }

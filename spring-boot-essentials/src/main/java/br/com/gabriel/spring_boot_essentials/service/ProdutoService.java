@@ -58,5 +58,18 @@ public class ProdutoService {
         return novoProduto;
     }
 
+    public ProdutoEntity atualizarProduto(ProdutoDto produtoDto, Integer id) {
+        ProdutoEntity produto = PRODUTOS.stream()
+                .filter(p -> p.getId().equals(id))
+                .findAny()
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        produto.setNome(produtoDto.getNome());
+        produto.setValor(produtoDto.getValor());
+        produto.setQuantidade(produtoDto.getQuantidade());
+
+        return produto;
+    }
+
 
 }
